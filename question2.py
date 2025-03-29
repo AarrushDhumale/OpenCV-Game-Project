@@ -4,7 +4,6 @@ import numpy as np
 import pygame
 import random
 
-# Initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
@@ -70,8 +69,8 @@ while running:
             x_pos = (1 - hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x) * WIDTH
             player_pos[0] = int(x_pos - player_size // 2)
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS,
-                                      mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=2, circle_radius=3),
-                                      mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=2))
+                                      mp_drawing.DrawingSpec(color=(0, 0, 0), thickness=2, circle_radius=3),
+                                      mp_drawing.DrawingSpec(color=(176, 273, 230), thickness=2))
     
     # Convert OpenCV frame to Pygame surface
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
