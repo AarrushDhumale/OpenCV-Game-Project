@@ -8,18 +8,18 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
-# Game settings
+
 WIDTH, HEIGHT = 1280, 640
 player_size = 50
 player_pos = [WIDTH // 2, HEIGHT - 100]
 
-# Enemy settings
+
 enemy_size = 50
 enemy_speed = 8
 enemy_list = []
 points = 0  # Score counter
 
-# Initialize pygame
+
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Hand-Controlled Object Dodging Game")
@@ -40,7 +40,7 @@ def move_enemies():
         enemy[1] += enemy_speed
         if enemy[1] > HEIGHT:
             enemy_list.remove(enemy)
-            points += 1  # Increase score when an enemy is dodged
+            points += 1  
 
 def check_collision():
     for enemy in enemy_list:
@@ -49,7 +49,7 @@ def check_collision():
             return True
     return False
 
-# Initialize webcam
+
 cap = cv2.VideoCapture(0)
 running = True
 game_over = False
@@ -60,7 +60,7 @@ while running:
         break
     
     frame = cv2.flip(frame, 1)
-    frame = cv2.flip(frame, 1)  # Flip vertically to change orientation
+    frame = cv2.flip(frame, 1)  
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     result = hands.process(rgb_frame)
     
@@ -72,7 +72,7 @@ while running:
                                       mp_drawing.DrawingSpec(color=(0, 0, 0), thickness=2, circle_radius=3),
                                       mp_drawing.DrawingSpec(color=(176, 273, 230), thickness=2))
     
-    # Convert OpenCV frame to Pygame surface
+    
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame = np.rot90(frame)
     frame = pygame.surfarray.make_surface(frame)
