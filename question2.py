@@ -17,7 +17,7 @@ player_pos = [WIDTH // 2, HEIGHT - 100]
 enemy_size = 50
 enemy_speed = 8
 enemy_list = []
-points = 0  # Score counter
+points = 0 
 
 
 pygame.init()
